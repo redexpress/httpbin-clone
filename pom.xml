@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.redexpress</groupId>
 	<artifactId>httpbin</artifactId>
-	<version>${app.version}</version>
+	<version>0.9.0</version>
 	<name>httpbin</name>
 	<description>httpbin.org clone</description>
 	<url/>
@@ -111,59 +111,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<!-- get Git commit hash -->
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>buildnumber-maven-plugin</artifactId>
-				<version>1.4</version>
-				<executions>
-					<execution>
-						<phase>validate</phase>
-						<goals>
-							<goal>create</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<doCheck>true</doCheck>
-					<doUpdate>false</doUpdate>
-				</configuration>
-			</plugin>
-			<plugin>
-				<!-- save Git commit hash to file-->
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>3.0.0</version>
-				<executions>
-					<execution>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<mkdir dir="${project.build.outputDirectory}/META-INF"/>
-								<echo file="${project.build.outputDirectory}/META-INF/build-info.properties">
-									git.commit=${buildNumber}
-									build.time=${maven.build.timestamp}
-								</echo>
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.2.0</version>
-					<configuration>
-						<useDefaultDelimiters>true</useDefaultDelimiters>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 
 
